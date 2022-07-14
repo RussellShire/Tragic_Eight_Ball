@@ -34,22 +34,20 @@ This goes to 3 because there are currently 3 phases of speech in the speakingArr
 This is my homebrew solution for using the same click on a button to do multiple things
 */
 //QUESTION FOR GRAHAM - Why isn't name being assigned? I think it's a scope issue?
-/*QUESTION FOR GRAHAM: defined a function within a function, is that bad practice? 
-I did it so it's right there and you can see it in one place*/
+
+const inputSave = function() { // creating this as a function so it can be resued in the else statment below
+  userInput = inputArray[userCounter] //necessary to assign the value outside the function
+  inputBox.value = '' // clears the input box
+  speaking(logRandArrayElem(speakingArray[userCounter]))};
 
 const run = function() {
   inputArray[userCounter] = inputBox.value //adds the input to the inputArray at the position of userCounter
-      userName = inputArray[0];
       if(userCounter <= 1) { //if statement allows the first two questions to be saved, then stops the counter
         userCounter ++
-        const inputSave = function() { // creating this as a function so it can be resued in the else statment below
-        userInput = inputArray[userCounter] //necessary to assign the value outside the function
-        inputBox.value = '' // clears the input box
-        speaking(logRandArrayElem(speakingArray[userCounter]))};
+        inputSave();
       } else {
         inputSave();
-      }
-};
+      }};
 
 //QUESTION FOR GRAHAM: This is technically the start of my code. Where is best practice for it to be?
 /*kicking off with a nested function
