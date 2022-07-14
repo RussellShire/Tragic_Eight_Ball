@@ -2,8 +2,8 @@
 let inputArray = ['', ''];
 let userName = inputArray[0];
 let userCounter = 0;
-const userQuestion = inputArray[userCounter]; //currently unused
 let userInput = inputArray[userCounter];
+
 const button = document.getElementById('button1');
 const inputBox = document.getElementById('input');
 const eightBallSpeak = document.querySelector('.edit-text');
@@ -14,26 +14,17 @@ const eightBallThinking = ['I shall think on this', 'Patenice while I predict yo
 const eightBallWelcome = [`Welcome ${userName} what knowledge do you seek?`]
 const eightBallGreeting = ['Who comes before me?', 'Who disturbs the allknowing?', 'Who are you that distrubs my slumber?']
 
-// an array of the arrays of text (so the counter can cycle through them)
+// an array of the arrays of text - so the counter can cycle through them
 const speakingArray = [eightBallGreeting, eightBallWelcome,eightBallAnswers];
 
 // A function that takes an array and returns a random number between zero and the length of an array-1
 const getRandArrayIndex = array => Math.floor(Math.random()*(array.length));
-
 
 // A function that takes the results of getRandArrayIndex and prints the corresponding array element
 const logRandArrayElem = array => array[getRandArrayIndex(array)];
 
 // A function that sends text to the paragraph above the input box
 const speaking = text => eightBallSpeak.textContent = text;
-  
-/*kicking off with a nested function
-speaking - edits the Dom
-logRandArrayElem - picks a random index from and array
-*/
-speaking(logRandArrayElem(eightBallGreeting));
-
-//QUESTION FOR GRAHAM - Why isn't name being assigned? I think it's a scope issue?
 
 /*BIG FUNCTION: Adds the user input to userCounter position in the array
 If this is 0 or 1 it'll then +1 to userCounter
@@ -42,7 +33,7 @@ If user counter is 2 then it records the input and doesn't move the counter forw
 This goes to 3 because there are currently 3 phases of speech in the speakingArray
 This is my homebrew solution for using the same click on a button to do multiple things
 */
-
+//QUESTION FOR GRAHAM - Why isn't name being assigned? I think it's a scope issue?
 /*QUESTION FOR GRAHAM: defined a function within a function, is that bad practice? 
 I did it so it's right there and you can see it in one place*/
 
@@ -60,6 +51,13 @@ const run = function() {
       }
 };
 
+//QUESTION FOR GRAHAM: This is technically the start of my code. Where is best practice for it to be?
+/*kicking off with a nested function
+speaking - edits the Dom
+logRandArrayElem - picks a random index from and array*/
+speaking(logRandArrayElem(eightBallGreeting));
+
+//QUESTION FOR GRAHAM: Can I combine two event listeners that trigger the same event?
 // EVENT LISTENERS - two, one for button click and one for keypress Enter, both run big function run 
 button.addEventListener('click', () => {
   run();  
