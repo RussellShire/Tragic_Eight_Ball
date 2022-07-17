@@ -11,6 +11,7 @@ const eightBallSpeak = document.getElementById('edit-text-id');
 // Arrays of text for 8 Ball to say
 const eightBallAnswers = ['It is certain', 'You already know this', 'I sincererly hope not', 'The answer is obvious', 'Unfortunately, yes', 'It is decidedly so', 'Reply hazy try again', 'Cannot predict now', 'Do not count on it', 'My sources say no', 'Outlook not so good', 'Signs point to yes']
 const eightBallThinking = ['I shall think on this', 'Patenice while I predict your pathetic future', `I knew you would ask that, classic ${userName}`, 'How unimaginative', 'A question barely worth my talents, but money is money', 'A most intriguing question. Makes a change', 'How, novel, I shall investigate fate on your behalf']
+
 const eightBallWelcome = [`Welcome ${localStorage.getItem('userName')}, what do you want to know?`];
 const eightBallGreeting = ['Who comes before me?', 'Who disturbs the allknowing?', 'Who are you that disturbs my slumber?', 'Another petitioner for my predictive powers, state your name mortal.', 'State your name and I shall consider a request.']
 // an array of the arrays of text - so the counter can cycle through them
