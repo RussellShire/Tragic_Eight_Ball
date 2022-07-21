@@ -2,11 +2,10 @@
 let userName = '',
   userCounter = 0;
 
+// Document
 const button = document.getElementById('button1'),
   inputBox = document.getElementById('input'),
   eightBallSpeak = document.getElementById('edit-text-id');
-
-const userInput = ['default'];
 
 // Arrays of text for 8 Ball to say
 const eightBallAnswers = ['It is certain', 'You already know this', 'I sincererly hope not', 'The answer is obvious', 'Unfortunately, yes', 'It is decidedly so', 'Reply hazy try again', 'Cannot predict now', 'Do not count on it', 'My sources say no', 'Outlook not so good', 'Signs point to yes']
@@ -29,11 +28,10 @@ If user counter is 2 then it records the input and doesn't move the counter forw
 This goes to 3 because there are currently 3 phases of speech in the speakingArray
 This is my homebrew solution for using the same click on a button to do multiple things
 */
-const run = () => {
+const setReply = () => {
   localStorage.setItem('userName', inputBox.value); //adds the input to the inputArray at the position of userCounter
   inputBox.value = '' // clears the input box
-  userInput.push(localStorage.getItem('userName')) //pushing local storage to a variable to get it out of scope
-  eightBallWelcome.push(`Welcome ${userInput[1]}, what do you want to know?`) //pushing into array to get it to call out of scope, seems crazy but nothing else works
+  eightBallWelcome.push(`Welcome ${localStorage.getItem('userName')}, what do you want to know?`) //pushing into array to get it to call out of scope, seems crazy but nothing else works
     speaking(logRandArrayElem(speakingArray[userCounter+1])) //returns a random statement from the array that matches user counter+1
   if(userCounter <= 1) { //if statement allows the first two questions to be saved, then stops the counter
         userCounter ++
@@ -41,12 +39,12 @@ const run = () => {
 
 // EVENT LISTENERS - two, one for button click and one for keypress Enter, both run big function run 
 button.addEventListener('click', () => {
-  run();  
+  setReply();  
   });
 
 inputBox.addEventListener('keypress', function(e) {
  if (e.key === 'Enter') { 
-   run()     
+  setReply()     
  }});
 
 //QUESTION FOR GRAHAM: This is technically the start of my code. Where is best practice for it to be?
