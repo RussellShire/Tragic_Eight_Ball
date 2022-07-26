@@ -32,10 +32,14 @@ const setReply = () => {
   localStorage.setItem('userName', inputBox.value); //adds the input to the inputArray at the position of userCounter
   inputBox.value = '' // clears the input box
   eightBallWelcome.push(`Welcome ${localStorage.getItem('userName')}, what do you want to know?`) //pushing into array to get it to call out of scope, seems crazy but nothing else works
-    speaking(logRandArrayElem(speakingArray[userCounter+1])) //returns a random statement from the array that matches user counter+1
-  if(userCounter <= 1) { //if statement allows the first two questions to be saved, then stops the counter
+  speaking(logRandArrayElem(speakingArray[userCounter+1])) //returns a random statement from the array that matches user counter+1
+  if(userCounter < 1) { //if statement allows the first two questions to be saved, then stops the counter
         userCounter ++
-  }};
+    } else { 
+    speaking(logRandArrayElem(eightBallThinking));
+    setTimeout(() => speaking(logRandArrayElem(eightBallAnswers)), 2000);    
+    }
+};
 
 // EVENT LISTENERS - two, one for button click and one for keypress Enter, both run big function run 
 button.addEventListener('click', () => {
