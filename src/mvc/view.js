@@ -5,11 +5,25 @@ export default class View {
 
     render(controller, speech){
 
+        let newContainer = ''
+        if(document.querySelector('.container') === null) {
+            newContainer = document.createElement('div')
+            newContainer.classList.add('container')
+            document.body.appendChild(newContainer)
+        }
+
+
+        const container = document.querySelector('.container')
+        while (container.hasChildNodes()) {
+            // Clears the rendering of tasks
+            container.removeChild(container.firstChild);
+        }
+
         // Speaking
         const output = document.createElement('span')
         output.classList.add('eightBall-output')
         output.textContent = speech
-        document.body.appendChild(output)
+        container.appendChild(output)
 
         // form
         const form = document.createElement('form')
@@ -31,7 +45,7 @@ export default class View {
         form.appendChild(formButton);
 
         // add form to body
-        document.body.appendChild(form)
+        container.appendChild(form)
 
         // event listener
         const userInput = (ev) => {
