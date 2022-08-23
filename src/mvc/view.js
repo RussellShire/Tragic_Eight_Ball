@@ -3,7 +3,7 @@ export default class View {
         return "Hello, I am the view"
     }
 
-    render(controller, mediatorResponse) {
-        // form that returns
-    }
+    // render(controller, mediatorResponse) {
+    //     // form that returns
+    // }
 }
