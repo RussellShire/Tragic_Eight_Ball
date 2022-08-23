@@ -1,0 +1,119 @@
+// export default class Model {
+//     constructor() {
+//         this.userInput = new Map();
+//         this.eightBall = new Map();
+
+//         // This will be a bit fat, could be in it's own module and fed in through a method?
+//         this.eightBall.set('welcomes', ['1','2','3'])
+//         this.eightBall.set('greetings', ['1','2','3'])
+//         this.eightBall.set('questionInvites', ['1','2','3'])
+//         this.eightBall.set('thoughts', ['1','2','3'])
+//         this.eightBall.set('answers', ['1','2','3'])
+//     }
+    
+//     hello() {
+//         return "Hello, I am the model"
+//     }
+
+//     getRandomResponse() {
+//        // Takes keyvalue from the eightBall Map and randomises response
+//     }
+
+//     setUserInput(userInput, state) {
+//         // takes user input and adds it to the map depending on state
+//         switch (state) {
+//             case 'welcome':
+//                 this.userInput.set('name', userInput)
+//                 break;
+//             case 'inviteQuestion':
+//                 this.userInput.set('question', userInput)
+        
+//         }
+//     }
+// }
+
+export class EightBallContext {
+    constructor() {
+        this.userName = ''
+        this.question = ''
+        this.currentState = new WelcomeState(this)
+        }
+
+    speak() {
+        // return a string
+        return this.currentState.speak()
+    }
+
+    ponder(response) {
+        // return a string
+        this.currentState.ponder(response)
+    }
+}
+
+export function getRandomElement(array){
+    return array[Math.floor(Math.random()*array.length)]
+}
+
+export class WelcomeState {
+    constructor(eightBall){
+        this.eightBall = eightBall
+        this.welcomes = [
+            'Who comes before me?', 
+            'Who disturbs the allknowing?', 
+            'Who are you that disturbs my slumber?', 
+            'Another petitioner for my predictive powers, state your name mortal.', 
+            'State your name and I shall consider a request.'
+        ]
+    }
+    speak() {
+        return getRandomElement(this.welcomes)
+        // 'What is your name?'
+    }
+
+    ponder(response) {
+        this.eightBall.userName = response
+        this.eightBall.currentState = new QuestionState(this.eightBall)
+    }
+}
+
+export class QuestionState {
+    constructor(eightBall) {
+        this.eightBall = eightBall
+    }
+    speak() {
+        return `What do you want to know ${this.eightBall.userName}?`
+    }
+
+    ponder(response) {
+        this.eightBall.question = response
+        this.eightBall.currentState = new AnswerState(this.eightBall)
+    }
+}
+
+export class AnswerState {
+    constructor(eightBall) {
+        this.eightBall = eightBall
+        this.answers = [
+            'It is certain', 
+            'You already know this', 
+            'I sincererly hope not', 
+            'The answer is obvious', 
+            'Unfortunately, yes', 
+            'It is decidedly so', 
+            'Reply hazy try again', 
+            'Cannot predict now', 
+            'Do not count on it', 
+            'My sources say no', 
+            'Outlook not so good', 
+            'Signs point to yes'
+        ]
+    }
+    speak() {
+        return getRandomElement(this.answers)
+        // add prompt for another question
+    }
+
+    ponder(response) {
+        this.eightBall.question = response
+    }
+}
