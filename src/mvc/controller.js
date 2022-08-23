@@ -2,32 +2,42 @@ export default class Controller {
     constructor(model, view) {
         this.eightBall = model
         this.view = view
+        this.controller = this
     }
 
-    hello() {
-        return "Hello, I am the controller"
-    }
+    stateMonitoring(speech){
+        //let state = this.eightBall.currentState
+        
+        const stateCheck = () => {
+            let counter = 0
+            if(counter === 1) {
+                clearInterval(stateCheckInterval)
+            }
 
-    sayHelloFromEveryone() {
-        console.log(this.hello())
-        console.log(this.model.hello())
-        console.log(this.view.hello())
+            if(/*state != this.eightBall.currentState*/ speech != this.eightBall.speak()){
+                // clearInterval(stateCheckInterval)
+                // state = this.eightBall.currentState
+                counter =+ 1
+                const speech = this.eightBall.speak()
+                this.view.render(this.controller, speech)                
+            }
+            //clearInterval(stateCheckInterval)
+        }
+        const stateCheckInterval = setInterval(stateCheck, 5000)
     }
 
     eightBallSpeaking(){
         const speech = this.eightBall.speak()
-        const controller = this
+        
+        this.stateMonitoring(speech)
 
-        this.view.render(controller, speech)
+        this.view.render(this.controller, speech)
     }
 
     eightBallListening(response){
         this.eightBall.ponder(response)
-
-        const speech = this.eightBall.speak()
-        const controller = this
-
-        this.view.render(controller, speech)
+        
+        this.eightBallSpeaking()
     }
 
     // mediator(userInput) {
@@ -56,7 +66,7 @@ export default class Controller {
     //             break;    
     //         }
         
-    //     const controller = this;
+        // const controller = this;
     //     this.view.render(controller, mediatorResponse) // taking output from the model + sending controller through
     // }
 }

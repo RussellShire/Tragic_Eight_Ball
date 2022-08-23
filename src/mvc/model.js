@@ -81,12 +81,45 @@ export class QuestionState {
         this.eightBall = eightBall
     }
     speak() {
-        return `What do you want to know ${this.eightBall.userName}?`
+        return `So, what do you want to know ${this.eightBall.userName}?`
     }
 
     ponder(response) {
         this.eightBall.question = response
-        this.eightBall.currentState = new AnswerState(this.eightBall)
+        this.eightBall.currentState = new ThinkingState(this.eightBall)
+    }
+}
+
+export class ThinkingState {
+    constructor(eightBall) {
+        this.eightBall = eightBall
+        this.thinking = [
+            'I shall think on this', 
+            'Patenice while I predict your pathetic future', 
+            `I knew you would ask that, classic ${this.eightBall.userName}`, 
+            'How unimaginative', 
+            'A question barely worth my talents, but money is money', 
+            'A most intriguing question. Makes a change', 
+            'How, novel, I shall investigate fate on your behalf'
+        ]
+        this.thought = getRandomElement(this.thinking)
+    }
+
+    speak() {
+        this.ponder()
+        // const answer = 
+        return this.thought
+        // add prompt for another question
+    }
+
+    ponder() {
+        //this.eightBall.question = response
+        const delay = () => {
+            this.eightBall.currentState = new AnswerState(this.eightBall)
+            // this.eightBall.speak()
+        }
+        
+        setTimeout(delay, 3000) 
     }
 }
 
@@ -107,13 +140,34 @@ export class AnswerState {
             'Outlook not so good', 
             'Signs point to yes'
         ]
+        this.answer = getRandomElement(this.answers)
     }
     speak() {
-        return getRandomElement(this.answers)
+        this.ponder()
+        return this.answer
         // add prompt for another question
     }
 
     ponder(response) {
+        const delay = () => {
+            this.eightBall.currentState = new FollowQuestionState(this.eightBall)
+        }
+        
+        setTimeout(delay, 3000)
+        
+    }
+}
+
+export class FollowQuestionState {
+    constructor(eightBall) {
+        this.eightBall = eightBall
+    }
+    speak() {
+        return `Do you have another question for me ${this.eightBall.userName}?`
+    }
+
+    ponder(response) {
         this.eightBall.question = response
+        this.eightBall.currentState = new ThinkingState(this.eightBall)
     }
 }

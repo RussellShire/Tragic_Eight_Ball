@@ -17,6 +17,7 @@ function main() {
     // c.sayHelloFromEveryone() // prove to ourselves the wiring all works
 
     c.eightBallSpeaking()
+    // c.stateMonitoring()
 }
 
 main()
