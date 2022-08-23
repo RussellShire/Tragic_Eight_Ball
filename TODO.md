@@ -1,7 +1,7 @@
 ### TODO
 
-- [ ] Define the concepts (and interactions) of the domain (in the language of the subject matter experts)
-- [ ] Logically test our definitions by explaining them
+- [x] Define the concepts (and interactions) of the domain (in the language of the subject matter experts)
+- [x] Logically test our definitions by explaining them
 - [ ] Use our conceptual definitions to create our model of the domain with psudocode
 - [ ] Implement our model (with unit tests)
 - [ ] Define our controller with psudocode
@@ -19,7 +19,7 @@ A magic 8 ball asks who is speaking. Greets them and invites them to ask a quest
 
 This can be broken down into phases:
 
-Introduction:
+Welcome:
 
 - User inputs their name
 

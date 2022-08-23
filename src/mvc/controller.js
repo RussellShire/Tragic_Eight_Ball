@@ -14,7 +14,16 @@ export default class Controller {
         console.log(this.view.hello())
     }
 
-    eightballSpeaking(){
+    eightBallSpeaking(){
+        const speech = this.eightBall.speak()
+        const controller = this
+
+        this.view.render(controller, speech)
+    }
+
+    eightBallListening(response){
+        this.eightBall.ponder(response)
+
         const speech = this.eightBall.speak()
         const controller = this
 

@@ -1,4 +1,4 @@
-import Model from './mvc/model.js'
+import { EightBallContext } from './mvc/model.js'
 import View from './mvc/view.js'
 import Controller from './mvc/controller.js'
 
@@ -10,11 +10,13 @@ confetti.create(document.getElementById('canvas'), {
 })({ particleCount: 200, spread: 200 });
 
 function main() {
-    const m = new Model()
+    const m = new EightBallContext()
     const v = new View()
     const c = new Controller(m, v)
 
-    c.sayHelloFromEveryone() // prove to ourselves the wiring all works
+    // c.sayHelloFromEveryone() // prove to ourselves the wiring all works
+
+    c.eightBallSpeaking()
 }
 
 main()
