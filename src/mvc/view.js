@@ -74,6 +74,22 @@ export default class View {
         this.renderContainer()
         this.renderSpeech(speech)
         this.renderForm(controller)
-        
+
+        const container = document.querySelector('.container')
+
+        const eightBallDiv = document.createElement('div')
+        const blackCircle = document.createElement('div')
+        const whiteCircle = document.createElement('div')
+
+        eightBallDiv.classList.add('ball-div')
+        blackCircle.classList.add('black-circle', 'circle')
+        whiteCircle.classList.add('white-circle', 'circle')
+
+        whiteCircle.textContent = '8'
+
+        eightBallDiv.appendChild(blackCircle)
+        eightBallDiv.appendChild(whiteCircle)
+        container.appendChild(eightBallDiv)
+
     }
 }
