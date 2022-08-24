@@ -3,8 +3,7 @@ export default class View {
         return "Hello, I am the view"
     }
 
-    render(controller, speech){
-
+    renderContainer(){
         let newContainer = ''
         if(document.querySelector('.container') === null) {
             newContainer = document.createElement('div')
@@ -12,13 +11,15 @@ export default class View {
             document.body.appendChild(newContainer)
         }
 
-
         const container = document.querySelector('.container')
         while (container.hasChildNodes()) {
             // Clears the rendering of tasks
             container.removeChild(container.firstChild);
         }
+    }
 
+    renderSpeech(speech){
+        const container = document.querySelector('.container')
         // Creating speaking element 
         const output = document.createElement('div')
         output.classList.add('eightBall-output')
@@ -30,6 +31,10 @@ export default class View {
                 output.textContent = speechPart
             }, (delay * (3000+speechPart.length * 20)));
         })
+    }
+
+    renderForm(controller){
+        const container = document.querySelector('.container')
         
         // form
         const form = document.createElement('form')
@@ -62,5 +67,13 @@ export default class View {
           };
     
           form.addEventListener('submit', (ev) => userInput(ev));
+    }
+
+    render(controller, speech){
+
+        this.renderContainer()
+        this.renderSpeech(speech)
+        this.renderForm(controller)
+        
     }
 }
