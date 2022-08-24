@@ -1,19 +1,19 @@
 export default class Controller {
-    constructor(model, view) {
-        this.eightBall = model
-        this.view = view
-        this.controller = this
-    }
+  constructor(model, view) {
+    this.eightBall = model;
+    this.view = view;
+    this.controller = this;
+  }
 
-    eightBallSpeaking(){
-        const speech = this.eightBall.speak()
-        
-        this.view.render(this.controller, speech)
-    }
+  eightBallSpeaking() {
+    const speech = this.eightBall.speak();
 
-    eightBallListening(response){
-        this.eightBall.ponder(response)
-        
-        this.eightBallSpeaking()
-    }
+    this.view.render(this.controller, speech);
+  }
+
+  eightBallListening(response) {
+    this.eightBall.ponder(response);
+
+    this.eightBallSpeaking();
+  }
 }
