@@ -31,8 +31,6 @@ export default class Controller {
     eightBallSpeaking(){
         const speech = this.eightBall.speak()
         
-        // this.stateMonitoring(speech)
-
         this.view.render(this.controller, speech)
     }
 
