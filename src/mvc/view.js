@@ -1,8 +1,5 @@
 export default class View {
-    hello() {
-        return "Hello, I am the view"
-    }
-
+   
     renderContainer(){
         let newContainer = ''
         if(document.querySelector('.container') === null) {
@@ -13,13 +10,13 @@ export default class View {
 
         const container = document.querySelector('.container')
         while (container.hasChildNodes()) {
-            // Clears the rendering of tasks
             container.removeChild(container.firstChild);
         }
     }
 
     renderSpeech(speech){
         const container = document.querySelector('.container')
+        
         // Creating speaking element 
         const output = document.createElement('div')
         output.classList.add('eightBall-output')
@@ -31,6 +28,25 @@ export default class View {
                 output.textContent = speechPart
             }, (delay * (3000+speechPart.length * 20)));
         })
+    }
+
+    renderEightBall(){
+        const container = document.querySelector('.container')
+
+        const eightBallDiv = document.createElement('div')
+        const blackCircle = document.createElement('div')
+        const whiteCircle = document.createElement('div')
+
+        eightBallDiv.classList.add('ball-div')
+        blackCircle.classList.add('black-circle')
+        whiteCircle.classList.add('white-circle')
+
+        whiteCircle.textContent = '8'
+
+        eightBallDiv.appendChild(blackCircle)
+        eightBallDiv.appendChild(whiteCircle)
+        container.appendChild(eightBallDiv)
+
     }
 
     renderForm(controller){
@@ -64,6 +80,12 @@ export default class View {
             form.reset();
             ev.preventDefault();
             controller.eightBallListening(userInput);
+
+            const blackCircle = document.querySelector('.black-circle')
+            const whiteCircle = document.querySelector('.white-circle')
+
+            blackCircle.classList.add('circle')
+            whiteCircle.classList.add('circle')
           };
     
           form.addEventListener('submit', (ev) => userInput(ev));
@@ -72,24 +94,8 @@ export default class View {
     render(controller, speech){
 
         this.renderContainer()
+        this.renderEightBall()
         this.renderSpeech(speech)
         this.renderForm(controller)
-
-        const container = document.querySelector('.container')
-
-        const eightBallDiv = document.createElement('div')
-        const blackCircle = document.createElement('div')
-        const whiteCircle = document.createElement('div')
-
-        eightBallDiv.classList.add('ball-div')
-        blackCircle.classList.add('black-circle', 'circle')
-        whiteCircle.classList.add('white-circle', 'circle')
-
-        whiteCircle.textContent = '8'
-
-        eightBallDiv.appendChild(blackCircle)
-        eightBallDiv.appendChild(whiteCircle)
-        container.appendChild(eightBallDiv)
-
     }
 }
