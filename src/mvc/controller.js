@@ -5,31 +5,33 @@ export default class Controller {
         this.controller = this
     }
 
-    stateMonitoring(speech){
-        //let state = this.eightBall.currentState
+    // stateMonitoring(){
+    //     let state = this.eightBall.currentState
         
-        const stateCheck = () => {
-            let counter = 0
-            if(counter === 1) {
-                clearInterval(stateCheckInterval)
-            }
+    //     const stateCheck = () => {
+            
+    //         let counter = 0
+    //         clearInterval(stateCheckInterval)
+    //         if(counter === 1) {
+    //             clearInterval(stateCheckInterval)
+    //         }
 
-            if(/*state != this.eightBall.currentState*/ speech != this.eightBall.speak()){
-                // clearInterval(stateCheckInterval)
-                // state = this.eightBall.currentState
-                counter =+ 1
-                const speech = this.eightBall.speak()
-                this.view.render(this.controller, speech)                
-            }
-            //clearInterval(stateCheckInterval)
-        }
-        const stateCheckInterval = setInterval(stateCheck, 5000)
-    }
-
+    //         if(state != this.eightBall.currentState){
+    //             // clearInterval(stateCheckInterval)
+    //             state = this.eightBall.currentState
+    //             counter =+ 1
+    //             const speech = this.eightBall.speak()
+    //             this.view.render(this.controller, speech)                
+    //         }
+    //         //clearInterval(stateCheckInterval)
+    //     }
+    //     const stateCheckInterval = setInterval(stateCheck, 5000)
+    // }
+                                      
     eightBallSpeaking(){
         const speech = this.eightBall.speak()
         
-        this.stateMonitoring(speech)
+        // this.stateMonitoring(speech)
 
         this.view.render(this.controller, speech)
     }
