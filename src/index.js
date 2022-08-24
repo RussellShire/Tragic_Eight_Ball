@@ -1,4 +1,4 @@
-import { EightBallContext } from './mvc/model.js'
+import EightBallContext from './mvc/model.js'
 import View from './mvc/view.js'
 import Controller from './mvc/controller.js'
 
@@ -17,6 +17,7 @@ function main() {
     // c.sayHelloFromEveryone() // prove to ourselves the wiring all works
 
     c.eightBallSpeaking()
+    // c.stateMonitoring()
 }
 
 main()

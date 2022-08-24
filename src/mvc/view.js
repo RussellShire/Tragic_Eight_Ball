@@ -19,12 +19,18 @@ export default class View {
             container.removeChild(container.firstChild);
         }
 
-        // Speaking
-        const output = document.createElement('span')
+        // Creating speaking element 
+        const output = document.createElement('div')
         output.classList.add('eightBall-output')
-        output.textContent = speech
         container.appendChild(output)
 
+        // Speaking by looping through the array with a delay
+        speech.forEach((speechPart, delay) => {
+            setTimeout(() => {
+                output.textContent = speechPart
+            }, (delay * (3000+speechPart.length * 20)));
+        })
+        
         // form
         const form = document.createElement('form')
         form.classList.add('form')

@@ -2,33 +2,22 @@ export default class Controller {
     constructor(model, view) {
         this.eightBall = model
         this.view = view
-    }
-
-    hello() {
-        return "Hello, I am the controller"
-    }
-
-    sayHelloFromEveryone() {
-        console.log(this.hello())
-        console.log(this.model.hello())
-        console.log(this.view.hello())
+        this.controller = this
     }
 
     eightBallSpeaking(){
         const speech = this.eightBall.speak()
-        const controller = this
-
-        this.view.render(controller, speech)
+        
+        this.view.render(this.controller, speech)
     }
 
     eightBallListening(response){
         this.eightBall.ponder(response)
-
-        const speech = this.eightBall.speak()
-        const controller = this
-
-        this.view.render(controller, speech)
+        
+        this.eightBallSpeaking()
     }
+
+    
 
     // mediator(userInput) {
     //     let state = 'welcome'
@@ -56,7 +45,7 @@ export default class Controller {
     //             break;    
     //         }
         
-    //     const controller = this;
+        // const controller = this;
     //     this.view.render(controller, mediatorResponse) // taking output from the model + sending controller through
     // }
 }
