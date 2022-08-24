@@ -26,17 +26,28 @@ export class WelcomeState {
         this.stateName = 'welcomeState'
         this.eightBall = eightBall
         this.welcomes = [
+            'I am the 8ball, blessed with perfect predictive powers',
+            'I am burdened by visions of the future, ask and I will share',
+            'Another petitioner for my predictive powers',
+            'Cursed with knowledge of the future, I already know your question will be dull',
+            'I could do anything, yet this is the best they could think of',
+            'Bow before the unfathomable knowledge of the 8ball'
+        ]
+        this.askName = [
             'Who comes before me?', 
             'Who disturbs the allknowing?', 
             'Who are you that disturbs my slumber?', 
-            'Another petitioner for my predictive powers, state your name mortal.', 
+            'State your name mortal.', 
             'State your name and I shall consider a request.'
         ]
+
         this.welcome = getRandomElement(this.welcomes)
+        this.askWho = getRandomElement(this.askName)
         this.responses = []
     }
     speak() {
         this.responses.push(this.welcome)
+        this.responses.push(this.askWho)
         return this.responses
     }
 
@@ -107,7 +118,7 @@ export class AnswerState {
     }
     speak() {
         this.responses.push(this.thought)
-        this.responses.push(`You asked '${this.eightBall.question}' and I say: ${this.answer}`)
+        this.responses.push(`${this.eightBall.userName}, you asked '${this.eightBall.question}' and I say: ${this.answer}`)
         this.responses.push(this.followUp)
 
         setTimeout(this.ponder(), 10)

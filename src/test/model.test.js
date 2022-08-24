@@ -1,18 +1,6 @@
 import EightBallContext from '../mvc/model.js'
 import { getRandomElement }  from '../mvc/model.js'
 
-// describe("model", () => {
-//     const model = new Model()
-
-//     it("says hello pass example", () => {
-//         expect(model.hello()).toBe("Hello, I am the model")
-//     })
-
-//     it.skip("says hello fail example", () => {
-//         expect(model.hello()).toBe("Yo") // how uncouth
-//     })
-// })
-
 describe("eightBallContext", () => {
     const eightBall = new EightBallContext()
 

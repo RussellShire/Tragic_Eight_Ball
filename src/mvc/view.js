@@ -25,11 +25,10 @@ export default class View {
         container.appendChild(output)
 
         // Speaking by looping through the array with a delay
-        console.log(speech)
         speech.forEach((speechPart, delay) => {
             setTimeout(() => {
                 output.textContent = speechPart
-            }, delay * 3000);
+            }, (delay * (3000+speechPart.length * 20)));
         })
         
         // form
