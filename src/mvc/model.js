@@ -1,6 +1,5 @@
 export default class EightBallContext {
   constructor() {
-    this.stateName = '';
     this.userName = '';
     this.question = '';
     this.currentState = new WelcomeState(this);
@@ -126,7 +125,8 @@ export class AnswerState {
     );
     this.responses.push(this.followUp);
 
-    setTimeout(this.ponder(), 10);
+    this.ponder()
+
     return this.responses;
   }
 

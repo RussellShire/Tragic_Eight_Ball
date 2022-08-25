@@ -28,6 +28,24 @@ describe('AnswerState', () => {
     eightBall.ponder('What else is going on');
     expect(eightBall.currentState.stateName).toBe('questionState')
   });
+
+  it('returns an array', () => {
+    const eightBall = new EightBallContext();
+
+    expect(Array.isArray(eightBall.speak())).toBeTruthy()
+    
+    eightBall.ponder('Russ');
+    expect(Array.isArray(eightBall.speak())).toBeTruthy()
+
+    eightBall.ponder('What is going on');
+    expect(Array.isArray(eightBall.speak())).toBeTruthy()
+
+    eightBall.ponder('What else is going on');
+    expect(Array.isArray(eightBall.speak())).toBeTruthy()
+
+    eightBall.ponder('is there anything else is going on');
+    expect(Array.isArray(eightBall.speak())).toBeTruthy()
+  })
 });
 
 describe('getRandomElement', () => {
