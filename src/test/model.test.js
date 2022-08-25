@@ -9,18 +9,24 @@ describe('eightBallContext', () => {
     eightBall.ponder('Russ');
     console.log(eightBall.speak());
     eightBall.ponder('What is going on');
-    console.log(eightBall);
+    console.log(eightBall.speak());
   });
 });
 
 describe('AnswerState', () => {
   const eightBall = new EightBallContext();
 
-  it('answers correctly', () => {
+  it('changes state', () => {
+    expect(eightBall.currentState.stateName).toBe('welcomeState')
+    
     eightBall.ponder('Russ');
-    // console.log(eightBall.name)
+    expect(eightBall.currentState.stateName).toBe('questionState')
+    
     eightBall.ponder('What is going on');
-    console.log(eightBall.currentState);
+    expect(eightBall.currentState.stateName).toBe('answerState')
+
+    eightBall.ponder('What else is going on');
+    expect(eightBall.currentState.stateName).toBe('questionState')
   });
 });
 
@@ -36,7 +42,7 @@ describe('getRandomElement', () => {
       `How, novel, I shall investigate fate on your behalf`,
     ];
     const random = getRandomElement(array);
-    console.log(random);
+    // console.log(random);
     expect(random).toBe(array.filter((elm) => elm === random)[0]);
   });
 });
