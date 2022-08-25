@@ -3,8 +3,6 @@
 }
 
 .container {
-  /* margin: auto; */
-  /* display: flex; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,10 +21,10 @@
 
 .form-input {
   margin: auto;
+  width: 200px;
 }
 
 .form-button {
-  /* margin: auto; */
   margin: 0.5rem;
 }
 
@@ -57,11 +55,10 @@
 
 .highlight {
   background-color: white;
-  margin: 4.1rem;
-  /* padding: 0.01rem; */
-  height: 0.05rem;
+  margin: 1rem;
+  height: 0.1rem;
   border-radius: 1rem;
-  opacity: 0.9;
+  opacity: 1;
   position: absolute;
   box-shadow: 0 0 15px 6px white;
 }
@@ -94,8 +91,7 @@ button {
   background: lightgrey;
   font-family: inherit;
   padding: 0.5rem;
-  font-weight: 900;
-  /* font-size: 18px; */
+  font-weight: 600;
   border: 2px solid black;
   border-radius: 1rem;
   box-shadow: 0.1em 0.1em;
