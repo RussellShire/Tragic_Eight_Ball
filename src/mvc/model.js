@@ -125,7 +125,7 @@ export class AnswerState {
     );
     this.responses.push(this.followUp);
 
-    this.ponder()
+    this.ponder();
 
     return this.responses;
   }

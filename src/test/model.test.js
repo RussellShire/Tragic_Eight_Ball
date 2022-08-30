@@ -1,51 +1,39 @@
 import EightBallContext from '../mvc/model.js';
 import { getRandomElement } from '../mvc/model.js';
 
-describe('eightBallContext', () => {
+describe('EightBall', () => {
   const eightBall = new EightBallContext();
 
-  it.skip('speaks', () => {
-    console.log(eightBall.speak());
-    eightBall.ponder('Russ');
-    console.log(eightBall.speak());
-    eightBall.ponder('What is going on');
-    console.log(eightBall.speak());
-  });
-});
+  it('changes state in correct order', () => {
+    expect(eightBall.currentState.stateName).toBe('welcomeState');
 
-describe('AnswerState', () => {
-  const eightBall = new EightBallContext();
-
-  it('changes state', () => {
-    expect(eightBall.currentState.stateName).toBe('welcomeState')
-    
     eightBall.ponder('Russ');
-    expect(eightBall.currentState.stateName).toBe('questionState')
-    
+    expect(eightBall.currentState.stateName).toBe('questionState');
+
     eightBall.ponder('What is going on');
-    expect(eightBall.currentState.stateName).toBe('answerState')
+    expect(eightBall.currentState.stateName).toBe('answerState');
 
     eightBall.ponder('What else is going on');
-    expect(eightBall.currentState.stateName).toBe('questionState')
+    expect(eightBall.currentState.stateName).toBe('questionState');
   });
 
-  it('returns an array', () => {
+  it('speaks and ponders', () => {
     const eightBall = new EightBallContext();
 
-    expect(Array.isArray(eightBall.speak())).toBeTruthy()
-    
+    expect(Array.isArray(eightBall.speak())).toBeTruthy();
+
     eightBall.ponder('Russ');
-    expect(Array.isArray(eightBall.speak())).toBeTruthy()
+    expect(Array.isArray(eightBall.speak())).toBeTruthy();
 
     eightBall.ponder('What is going on');
-    expect(Array.isArray(eightBall.speak())).toBeTruthy()
+    expect(Array.isArray(eightBall.speak())).toBeTruthy();
 
     eightBall.ponder('What else is going on');
-    expect(Array.isArray(eightBall.speak())).toBeTruthy()
+    expect(Array.isArray(eightBall.speak())).toBeTruthy();
 
     eightBall.ponder('is there anything else is going on');
-    expect(Array.isArray(eightBall.speak())).toBeTruthy()
-  })
+    expect(Array.isArray(eightBall.speak())).toBeTruthy();
+  });
 });
 
 describe('getRandomElement', () => {
@@ -60,7 +48,6 @@ describe('getRandomElement', () => {
       `How, novel, I shall investigate fate on your behalf`,
     ];
     const random = getRandomElement(array);
-    // console.log(random);
     expect(random).toBe(array.filter((elm) => elm === random)[0]);
   });
 });

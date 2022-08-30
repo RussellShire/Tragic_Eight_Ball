@@ -22,10 +22,10 @@ export default class View {
     container.appendChild(output);
 
     // Speaking by looping through the array with a delay
-    speech.forEach((speechPart, delay) => {
+    speech.forEach((speechPart, index) => {
       setTimeout(() => {
         output.textContent = speechPart;
-      }, delay * (3000 + speechPart.length * 20));
+      }, index * (3000 + speechPart.length * 20));
     });
   }
 
