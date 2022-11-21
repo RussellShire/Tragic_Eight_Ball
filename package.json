@@ -6,9 +6,6 @@
     "format": "prettier --write \"src/**/*.js\"",
     "lint": "prettier --check \"src/**/*.js\""
   },
-  "dependencies": {
-    "canvas-confetti": "^1.2.0"
-  },
   "devDependencies": {
     "@babel/core": "^7.18.10",
     "@babel/preset-env": "^7.18.10",

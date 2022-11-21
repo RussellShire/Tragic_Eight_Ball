@@ -1,6 +1,6 @@
 # TRAGIC EIGHT BALL
 
-A sassy twist on an iconic beginner JavaScript project. An Eightball that will answer any typed question - but in a world weary manner befitting an all powerful creature forced to answer trivial questions for strangers on the internet.
+A sassy twist on an iconic beginner JavaScript project - refactored to follow MVC pattern. An Eightball that will answer any typed question - but in a world weary manner befitting an all powerful creature forced to answer trivial questions for strangers on the internet.
 
 <!-- ###Hosted
 https://russellshire.github.io/react-pokedex/ -->
@@ -16,6 +16,8 @@ https://russellshire.github.io/react-pokedex/ -->
 
 # Usage
 
+Tested and working on Snowpack version 3.3.7, November 2022
+
 ### Get the depdencies installed:
 
 1. nvm use
@@ -25,7 +27,7 @@ https://russellshire.github.io/react-pokedex/ -->
 
 1. cd /src
 2. npm run build
-3. npm run http
+3. npm run start
 
 ### Get the tests up and running, assuming the depdencies are installed:
 
