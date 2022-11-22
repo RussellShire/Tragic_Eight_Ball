@@ -2,8 +2,8 @@
 
 A sassy twist on an iconic beginner JavaScript project - refactored to follow MVC pattern. An Eightball that will answer any typed question - but in a world weary manner befitting an all powerful creature forced to answer trivial questions for strangers on the internet.
 
-<!-- ###Hosted
-https://russellshire.github.io/react-pokedex/ -->
+<!-- #Hosted
+https://russellshire.github.io/tragic_eight_ball/ -->
 
 # Project specifications
 
