@@ -1,0 +1,108 @@
+* {
+  font-family: 'Comfortaa', cursive;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eightBall-output {
+  margin: auto;
+  max-width: 80%; 
+  margin-bottom: 1rem;
+}
+
+.form {
+  margin: auto;
+  max-width: 80%;
+}
+
+.form-input {
+  margin: auto;
+  width: 200px;
+}
+
+.form-button {
+  margin: 0.5rem;
+}
+
+.ball-div {
+  display: flex;
+  margin: 1rem;
+  padding-bottom: 1.5rem;
+}
+
+.black-circle {
+  background-color: black;
+  padding: 2.8rem;
+  border-radius: 2.8rem;
+  display: inline-flex;
+  position: absolute;
+  filter: drop-shadow(0.5rem 0.5rem 0.55rem grey);
+  
+}
+
+.white-circle {
+  background-color: white;
+  padding: 0.5rem 0.8rem;
+  border-radius: 2rem;
+  margin: 1.3rem;
+  position: relative;
+  vertical-align: text-bottom;
+}
+
+.highlight {
+  background-color: white;
+  margin: 1rem;
+  height: 0.1rem;
+  border-radius: 1rem;
+  opacity: 1;
+  position: absolute;
+  box-shadow: 0 0 15px 6px white;
+}
+
+.circle { 
+  animation: shake 0.5s;
+  animation-iteration-count: 1.5;
+}
+
+.ball-div:active { 
+  animation: shake 0.5s;
+  animation-iteration-count: 1.5;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+button {
+  background: lightgrey;
+  font-family: inherit;
+  padding: 0.5rem;
+  font-weight: 600;
+  border: 2px solid black;
+  border-radius: 1rem;
+  box-shadow: 0.1em 0.1em;
+ }
+ 
+ button:hover {
+  transform: translate(-0.05em, -0.05em);
+  box-shadow: 0.15em 0.15em;
+ }
+ 
+ button:active {
+  transform: translate(0.05em, 0.05em);
+  box-shadow: 0.05em 0.05em;
+ }
