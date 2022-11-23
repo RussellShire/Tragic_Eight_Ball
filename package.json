@@ -1,4 +1,7 @@
-{
+{ 
+  "name": "react-form-patterns",
+  "version": "0.1.0",
+  "private": false,
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build",
